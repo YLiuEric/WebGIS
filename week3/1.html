@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body,
+        html,
+        #allmap {
+            width: 100%;
+            height: 90%;
+            overflow: hidden;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+
+    </style>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Quyiuyf0eRnAl1zXjYISaXzofr5N0xIN"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerTool/1.2/src/MarkerTool_min.js"></script>
+    <title>第三次实习 - 地址名称和地理坐标的转换</title>
+</head>
+
+<body>
+    <div id="allmap"></div>
+    <div>
+        <label>地址名称：</label>
+        <input id="address" type="text" />
+        <input id="submit" type="button" value="地理编码" />
+    </div>
+    <div>
+        <label>地理坐标：</label>
+        <label id="coordinate" type="text" />
+    </div>
+</body>
+
+<script type="text/javascript">
+    // 声明地图对象并移动缩放至目标点
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(114.065, 22.559);
+    map.centerAndZoom(point, 15);
+
+    // 绑定按钮点击事件
+    $('#submit').click(() => {
+        // 通过 REST API 请求地址解析
+        $.ajax({
+            type: 'GET',
+            url: 'https://api.map.baidu.com/geocoder/v2/',
+            dataType: 'jsonp',
+            data: {
+                ak: 'Quyiuyf0eRnAl1zXjYISaXzofr5N0xIN',
+                output: 'json',
+                address: $('#address').val()
+            },
+            success: (res) => {
+                if (res.status) {
+                    $('#coordinate').html(res.msg);  // 显示错误信息
+                } else {
+                    // 显示解析结果
+                    var coor = res.result.location;
+                    $('#coordinate').html(coor.lng.toFixed(2).toString() + ', ' + coor.lat.toFixed(2).toString());
+
+                    // 在地图中标注位置
+                    var point = new BMap.Point(coor.lng, coor.lat);
+                    var marker = new BMap.Marker(point);
+                    map.addOverlay(marker);
+                    map.centerAndZoom(point, 15);
+                }
+            },
+            error: (err) => {
+                console.log(err);  // 打印错误信息
+            }
+        });
+    });
+</script>
+
+</html>

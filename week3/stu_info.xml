@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<booklist>
+	<student>
+        <no>001</no>
+		<name>张三</name>
+		<gender>男</gender>
+        <year>2016</year>
+		<classlist>
+			<class>地理信息系统原理</class>
+            <class>数据库原理</class>
+            <class>高等数学B1</class>
+		</classlist>
+	</student>
+	<student>
+        <no>002</no>
+		<name>李四</name>
+		<gender>女</gender>
+        <year>2017</year>
+		<classlist>
+			<class>线性代数</class>
+            <class>离散数学</class>
+            <class>计算机原理</class>
+		</classlist>
+	</student>
+</booklist>

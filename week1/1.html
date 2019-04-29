@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body,
+        html,
+        #allmap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Quyiuyf0eRnAl1zXjYISaXzofr5N0xIN"></script>
+    <title>第一次实习 - 地图配置和文本标注</title>
+</head>
+
+<body>
+    <div id="allmap"></div>
+</body>
+
+<script type="text/javascript">
+    // 声明地图对象并移动缩放至目标点
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(114.065, 22.559);
+    map.centerAndZoom(point, 15);
+
+    // 声明文本坐标对象
+    var opts = {
+        position: point,                // 坐标
+        offset: new BMap.Size(40, -40)  // 偏移量
+    };
+
+    // 声明文本标注对象，并设置相关属性
+    var label = new BMap.Label("文本标注测试：深圳市莲花山公园", opts);
+    label.setStyle({
+        color: "red",
+        fontSize: "18px",
+        height: "25px",
+        lineHeight: "26px",
+        fontFamily: "微软雅黑"
+    });
+
+    // 添加文本标注
+    map.addOverlay(label);   
+</script>
+
+</html>

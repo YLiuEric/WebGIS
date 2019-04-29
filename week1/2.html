@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body,
+        html,
+        #allmap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Quyiuyf0eRnAl1zXjYISaXzofr5N0xIN"></script>
+    <title>第一次实习 - 地图控件的配置</title>
+</head>
+
+<body>
+    <div id="allmap"></div>
+</body>
+
+<script type="text/javascript">
+    // 声明地图对象并移动缩放至目标点
+    var map = new BMap.Map("allmap");
+    map.centerAndZoom(new BMap.Point(116.404, 39.923), 15);
+
+    // 声明地图控件对象：缩放平移控件（左上角）、比例尺（左上角）、地图类型选项卡（右上角）、缩略图控件（右下角）
+    var scaleControl = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_TOP_LEFT });
+    var navigationControl = new BMap.NavigationControl();
+    var mapTypeControl = new BMap.MapTypeControl({ mapTypes: [BMAP_NORMAL_MAP, BMAP_HYBRID_MAP], anchor: BMAP_ANCHOR_TOP_RIGHT });
+    var overviewMapControl = new BMap.OverviewMapControl({ isOpen: true, anchor: BMAP_ANCHOR_BOTTOM_RIGHT });
+
+    // 添加地图控件
+    map.addControl(scaleControl);
+    map.addControl(navigationControl);
+    map.addControl(mapTypeControl);
+    map.addControl(overviewMapControl); 
+</script>
+
+</html>

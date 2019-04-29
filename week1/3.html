@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body,
+        html,
+        #allmap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Quyiuyf0eRnAl1zXjYISaXzofr5N0xIN"></script>
+    <title>第一次实习 - 地图覆盖物和事件的配置</title>
+</head>
+
+<body>
+    <div id="allmap"></div>
+</body>
+
+<script type="text/javascript">
+    // 声明地图对象并移动缩放至目标点
+    var map = new BMap.Map("allmap");
+    map.centerAndZoom(new BMap.Point(116.404, 39.915), 14);
+
+    // 声明点对象
+    var marker = new BMap.Marker(new BMap.Point(116.394011, 39.922332));
+
+    // 声明折线对象
+    var polyline = new BMap.Polyline([
+        new BMap.Point(116.416936, 39.920506),
+        new BMap.Point(116.421607, 39.911209),
+        new BMap.Point(116.434686, 39.924435)
+    ], { strokeColor: "orange", strokeWeight: 5, strokeOpacity: 0.5 });
+
+    // 声明圆对象
+    var circle = new BMap.Circle(new BMap.Point(116.404, 39.910), 500, { strokeColor: "red", strokeWeight: 5, strokeOpacity: 0.5 });
+
+    // 声明多边形对象
+    var polygon = new BMap.Polygon([
+        new BMap.Point(116.380141, 39.928585),
+        new BMap.Point(116.380716, 39.913644),
+        new BMap.Point(116.389627, 39.913312),
+        new BMap.Point(116.388405, 39.920783),
+        new BMap.Point(116.384237, 39.920506)
+    ], { strokeColor: "blue", strokeWeight: 5, strokeOpacity: 0.5 });
+
+    // 声明矩形对象
+    var rectangle = new BMap.Polygon([
+        new BMap.Point(116.398395, 39.928751),
+        new BMap.Point(116.408599, 39.928751),
+        new BMap.Point(116.408599, 39.919787),
+        new BMap.Point(116.398395, 39.919787)
+    ], { strokeColor: "green", strokeWeight: 5, strokeOpacity: 0.5 });
+
+    // 添加覆盖物
+    map.addOverlay(marker);
+    map.addOverlay(polyline);
+    map.addOverlay(circle);
+    map.addOverlay(polygon);
+    map.addOverlay(rectangle);
+
+    // 点击事件回调函数
+    function onMapClick(e) {
+        alert(e.point.lng + ", " + e.point.lat);
+    }
+
+    // 将鼠标单机事件与回调函数绑定
+    map.addEventListener("click", onMapClick);
+</script>
+
+</html>

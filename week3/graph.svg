@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" width="640" height="480">
+    <desc>
+        svg test
+    </desc>
+    <g>
+        <rect id="svg_1" width="121" height="73" x="167" y="132" fill="#FF0000" stroke="#000000" stroke-width="5"/>
+        <polygon id="svg_2" cx="349" cy="173" fill="#ff7f00" stroke="#000000" stroke-width="5" points="
+            432.9652099609375,207
+            406.0409240722656,244.05812072753906
+            362.4764709472656,229.90318298339844
+            362.4764709472656,184.09681701660156
+            406.0409240722656,169.94187927246094
+            432.9652099609375,207" edge="45.806356" orient="x" shape="regularPoly" sides="5" strokeWidth="5" strokecolor="#000000"/>
+        <line id="svg_4" x1="139" x2="286" y1="258" y2="346" fill="none" stroke="#000000" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5"/>
+    </g>
+</svg>
